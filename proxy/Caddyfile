@@ -1,0 +1,10 @@
+# Optional reverse-proxy config for Kavita + Audiobookshelf
+# Uncomment and adjust domain names if you want Caddy in front.
+
+# books.example.com {
+#     reverse_proxy localhost:5000
+# }
+#
+# audio.example.com {
+#     reverse_proxy localhost:13378
+# }
