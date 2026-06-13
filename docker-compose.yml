@@ -4,7 +4,7 @@
 services:
   # --- Kavita (books / EPUB) ---
   kavita:
-    image: jvmilazz0/kavita:latest
+    image: jvmilazz0/kavita:nightly
     container_name: kavita
     restart: unless-stopped
     environment:
@@ -19,7 +19,7 @@ services:
 
   # --- Audiobookshelf (audio) ---
   audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:latest
+    image: ghcr.io/advplyr/audiobookshelf:2.7.2 #ghcr.io/advplyr/audiobookshelf:latest
     container_name: audiobookshelf
     restart: unless-stopped
     environment:

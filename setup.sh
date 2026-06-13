@@ -32,9 +32,9 @@ log "Checking Docker..."
 
 if ! command -v docker &>/dev/null; then
     log "Docker not found. Installing..."
-    if command -v apt-get &>/dev/null; then
-        sudo apt-get update -y
-        sudo apt-get install -y docker.io docker-compose-v2
+    if command -v apt &>/dev/null; then
+        sudo apt update -y
+        sudo apt install -y docker.io docker-compose-v2
     elif command -v dnf &>/dev/null; then
         sudo dnf install -y docker docker-compose-plugin
     elif command -v pacman &>/dev/null; then
