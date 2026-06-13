@@ -25,8 +25,12 @@ Reproducible setup for the **two backend servers** the app talks to — **Kavita
 │   └── restore.sh          # restore volumes from a backup
 ├── proxy/                  # (optional) Caddyfile / reverse-proxy config
 │   └── Caddyfile
-└── README.md               # runbook (this file)
+├── INSTALL.md              # step-by-step install guide for a fresh Pi
+└── readme.md               # runbook (this file)
 ```
+
+> **New to this?** Follow [`INSTALL.md`](INSTALL.md) for a clear, ordered walkthrough.
+
 
 ---
 
@@ -37,7 +41,8 @@ Defines both services side by side:
 - **Kavita** — config volume + books library path, expose `5000`.
 - **Audiobookshelf** — config + metadata volumes + audiobooks library path, expose `13378`.
 - Both: `restart: unless-stopped`, `PUID`/`PGID`/`TZ` pulled from `.env`.
-- Pin **arm64-compatible image tags** so it runs on the Pi.
+- Uses **arm64-compatible images** so it runs on the Pi (tags are `latest`; pin a version in `docker-compose.yml` for stricter reproducibility).
+
 
 ### `.env.example`
 All host-specific bits, so the compose file stays generic. Copy to `.env` (which is git-ignored) and fill in:
@@ -62,7 +67,8 @@ Turns the manual checklist into one command on a fresh host:
 5. Print the two URLs to finish first-run setup in the browser.
 
 ### `scripts/backup.sh` / `restore.sh`
-Back up and restore each app's **config/database volume** (where libraries, users, and progress live) — *not* the media itself. This is the part that's painful to recreate.
+Back up and restore each app's **config/database** (where libraries, users, and progress live) — *not* the media itself. This covers the Kavita config dir, the Audiobookshelf config dir, and the ABS metadata volume. This is the part that's painful to recreate.
+
 
 ---
 

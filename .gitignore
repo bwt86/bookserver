@@ -1,0 +1,10 @@
+# Host-specific config & secrets — never commit
+.env
+
+# Local backups produced by scripts/backup.sh
+bookserver-backups/
+*.tar.gz
+
+# OS / editor cruft
+.DS_Store
+*.swp
