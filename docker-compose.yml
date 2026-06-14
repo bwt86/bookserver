@@ -45,7 +45,7 @@ services:
       - ${MEDIA_BOOKS}:/share/books
       - ${MEDIA_AUDIO}:/share/audiobooks
     command: >
-      -u "${SAMBA_USER};${SAMBA_PASS}"
+      -u "${SAMBA_USER:-library};${SAMBA_PASS:-changeme}"
       -s "books;/share/books;yes;no;no;${SAMBA_USER}"
       -s "audiobooks;/share/audiobooks;yes;no;no;${SAMBA_USER}"
       -p
