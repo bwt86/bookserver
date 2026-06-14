@@ -32,7 +32,7 @@ services:
       - audiobookshelf_metadata:/metadata
     ports:
       - "${ABS_PORT:-13378}:80"
-  # --- Samba (fileshare) ---
+  # --- Samba (fileshare for uploading books) ---
   samba:
     image: dperson/samba
     container_name: samba
