@@ -32,6 +32,24 @@ services:
       - audiobookshelf_metadata:/metadata
     ports:
       - "${ABS_PORT:-13378}:80"
+  samba:
+    image: dperson/samba
+    container_name: samba
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    ports:
+      - "139:139"
+      - "445:445"
+    volumes:
+      - ${MEDIA_BOOKS}:/share/books
+      - ${MEDIA_AUDIO}:/share/audiobooks
+    command: >
+      -u "${SAMBA_USER};${SAMBA_PASS}"
+      -s "books;/share/books;yes;no;no;${SAMBA_USER}"
+      -s "audiobooks;/share/audiobooks;yes;no;no;${SAMBA_USER}"
+      -p
+
 
 # Only ABS's metadata is a named volume; Kavita config, ABS config, and all
 # media live on bind-mounted host paths (set in .env), per the Pi/SSD layout.
