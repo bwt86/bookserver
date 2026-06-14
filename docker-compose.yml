@@ -19,7 +19,7 @@ services:
 
   # --- Audiobookshelf (audio) ---
   audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:2.7.2 #ghcr.io/advplyr/audiobookshelf:latest
+    image: ghcr.io/advplyr/audiobookshelf:2.7.2
     container_name: audiobookshelf
     restart: unless-stopped
     environment:
@@ -31,7 +31,7 @@ services:
       - ${MEDIA_AUDIO:-/srv/media/audiobooks}:/audiobooks
       - audiobookshelf_metadata:/metadata
     ports:
-      - "${ABS_PORT:-13378}:13378"
+      - "${ABS_PORT:-13378}:80"
 
 # Only ABS's metadata is a named volume; Kavita config, ABS config, and all
 # media live on bind-mounted host paths (set in .env), per the Pi/SSD layout.
